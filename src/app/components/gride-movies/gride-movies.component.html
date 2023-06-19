@@ -1,0 +1,8 @@
+<app-form-search-movie (searchTitle)="searchTitle($event)"></app-form-search-movie>
+
+<div class="row" >
+    <div class="col"  *ngFor="let movie of httpMoviesServises.movies?.Search">
+        <app-card-movie  [movie]="movie" class="mt-5 ms-5"></app-card-movie>
+    </div>    
+</div>
+<app-pagination-movies [pages]="httpMoviesServises.pages"(selectPage)="selectPage($event)"></app-pagination-movies>
