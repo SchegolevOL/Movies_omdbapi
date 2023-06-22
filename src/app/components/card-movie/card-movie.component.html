@@ -3,18 +3,26 @@
     <div class="card-body">
       <h5 class="card-title">{{movie?.Title}}</h5>
       <p class="card-text">{{movie?.Year}}</p>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button (click)="onClickDetale()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Detale
       </button>
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">{{detale?.Title}}</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              ...
+              <div>Year : {{detale?.Year}}</div>
+              <div>Runtime : {{detale?.Runtime}}</div>
+              <div>Released : {{detale?.Released}}</div>
+              <div>Genre : {{detale?.Genre}}</div>
+              <div>Plot : {{detale?.Plot}}</div>
+              <div>Language : {{detale?.Language}}</div>
+              <div>Country : {{detale?.Country}}</div>
+              <div></div>
+              
             </div>
             
           </div>

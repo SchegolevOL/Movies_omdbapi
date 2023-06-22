@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IMovie } from 'src/app/models/i-movie';
+
 import { IMovieResponse } from 'src/app/models/i-movie-response';
 import { HttpMoviesService } from 'src/app/services/http-movies.service';
 
@@ -21,5 +21,7 @@ export class GrideMoviesComponent {
     this.httpMoviesServises.page(page);
    
   }
- 
+  clickDetale(id:string){
+    this.httpMoviesServises.searchDetale(id);
+  }
 }
