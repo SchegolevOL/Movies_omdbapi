@@ -6,15 +6,19 @@ import { IMovieDetale } from 'src/app/models/i-movie-detale';
 @Component({
   selector: 'app-card-movie',
   templateUrl: './card-movie.component.html',
-  styleUrls: ['./card-movie.component.scss']
+  styleUrls: ['./card-movie.component.scss'],
 })
 export class CardMovieComponent {
-  
   @Input() movie?: IMovie;
   @Input() detale?: IMovieDetale;
-  @Output() detaleClick: EventEmitter<string>=new EventEmitter;
-  onClickDetale(){
+  @Output() detaleClick: EventEmitter<string> = new EventEmitter();
+  onClickDetale() {
     this.detaleClick.emit(this.movie!.imdbID);
-   
-    }
+  }
+  @Input()favorite: boolean = true;
+  @Output() clicFavorite:EventEmitter<boolean> = new EventEmitter();
+  onClickFavorite() {
+    this.favorite=!this.favorite;
+    this.clicFavorite.emit(this.favorite);
+  }
 }

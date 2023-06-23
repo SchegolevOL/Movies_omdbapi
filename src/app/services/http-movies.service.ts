@@ -2,16 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IMovieResponse } from '../models/i-movie-response';
 import { IMovieDetale } from '../models/i-movie-detale';
+import { IMovieFavorite } from '../models/i-movie-favorite';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpMoviesService {
+
   public movies: IMovieResponse | undefined;
   selectTitle: string = '';
   selectPage: number = 1;
   pages: Array<number> = [];
   detale: IMovieDetale | undefined;
+  favoriteMovies: Array<IMovieFavorite>=[];
 
   constructor(public http: HttpClient) {}
 
@@ -69,52 +72,11 @@ export class HttpMoviesService {
      this.pages.push(i);
       
     }
-console.log(lenght)
-      console.log(this.selectPage);
-      console.log(this.pages);
 
-
-
-
-    // if (this.selectPage < 10 || lenght <= 10) {
-    //   for (let i = 1; i < lenght; i++) {
-    //     this.pages[i] = i + 1;
-    //   } else if (this.selectPage < 10 || lenght <= 10) {
-    //     for (let i = this.selectPage; i < lenght; i++) {
-    //       this.pages[i] = i + 1;
-    //     }
-    //   }
-    // }
-    // if (this.selectPage < 5) {
-    //   for (let i = 0; i < 10; i++) {
-    //     this.pages[i] = i + 1;
-    //   }
-      
-    //   return;
-    // }
-    // if (this.selectPage >= lenght - 6) {
-    //   console.log("gud")
-    //   for (let i = lenght - 10; i < lenght; i++) {
-    //     this.pages[i] = i + 1;
-    //   }
-    //   console.log(lenght)
-    //   console.log(this.selectPage+" 2");
-    //   console.log(this.pages);
-    //   return;
-    // }
-
-    // for (let i = 6; i < lenght - 10; i++) {
-    //   this.pages[i] = i + 1;
-    //   console.log(lenght)
-    //   console.log(this.selectPage+" 3")
-    //   console.log(this.pages);
-    //   return;
-    // }
   }
 
   page(page: number): void {
     this.selectPage = page;
-    this.getArrPages();
     this.searchMovies(this.selectTitle);
   }
 
@@ -139,4 +101,33 @@ console.log(lenght)
 
     return valid;
   }
+favorite(){
+  
+}
+
+saveFavorite(id:string, favorite:boolean): void {
+    localStorage.setItem(
+      "Favorite",
+      JSON.stringify(this.movies)
+    );
+  }
+
+  loadFavorite(): boolean {
+    let json = localStorage.getItem("Favorite");
+    console.log('title - ' + this.selectTitle + this.selectPage);
+
+    console.log('json - ' + json);
+    let valid = false;
+    if (json) {
+      valid = true;
+      this.movies = JSON.parse(json);
+      this.getArrPages();
+    }
+
+    return valid;
+  }
+
+
+
+
 }

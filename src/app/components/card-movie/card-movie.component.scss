@@ -1,15 +1,19 @@
 .card {
     width: 200px;
-    height: 600px;
+    height: 630px;
 }
 img {
     width: 100%;
     height: 400px;
     object-fit: fill;
 }
-.btn {
+.btn-modal {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+}
+.favorite{
+    height: 30px;
+    width: 30px;
 }

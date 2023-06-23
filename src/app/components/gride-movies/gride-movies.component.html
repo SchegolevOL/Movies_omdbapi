@@ -2,7 +2,7 @@
 
 <div class="row" >
     <div class="col"  *ngFor="let movie of httpMoviesServises.movies?.Search">
-        <app-card-movie (detaleClick)="clickDetale($event)"  [movie]="movie" [detale] = "httpMoviesServises.detale" class="mt-5 ms-5"></app-card-movie>
+        <app-card-movie (clicFavorite)="clickFavorite($event)" (detaleClick)="clickDetale($event)"  [movie]="movie" [detale] = "httpMoviesServises.detale" class="mt-5 ms-5"></app-card-movie>
     </div>    
 </div>
 <app-pagination-movies  [pages]="httpMoviesServises.pages" (selectPage)="selectPage($event)"></app-pagination-movies>

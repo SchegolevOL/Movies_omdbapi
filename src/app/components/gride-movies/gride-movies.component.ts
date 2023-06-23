@@ -24,4 +24,7 @@ export class GrideMoviesComponent {
   clickDetale(id:string){
     this.httpMoviesServises.searchDetale(id);
   }
+  clickFavorite(favorite:boolean){
+
+  }
 }
